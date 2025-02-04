@@ -9,9 +9,4 @@
   </div>
 </template>
 
-<style scoped>
-.app {
-  background-image: url(/skibidirizz.png);
-  background-size: cover;
-}
-</style>
+<style scoped></style>
