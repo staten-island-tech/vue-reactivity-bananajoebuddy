@@ -1,7 +1,7 @@
 @import './base.css';
  
 body {
-  background-image: url(/skibidirizz.png);
+  background-image: url(/background.png.gif);
   background-repeat: no-repeat;
   background-size: cover;
 }

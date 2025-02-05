@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div>
+    <img :src="usagidle" alt="" />
+  </div>
 </template>
 
 <script setup></script>
