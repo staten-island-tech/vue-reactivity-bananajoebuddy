@@ -4,9 +4,7 @@
   <div class="app">
     <header></header>
   </div>
-  <div>
-    <h1>ajfdlkj</h1>
-  </div>
+  <div></div>
 </template>
 
 <style scoped></style>
