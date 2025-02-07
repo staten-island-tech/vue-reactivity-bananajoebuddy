@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div><UsagiCom /></div>
 </template>
 
 <script setup>
