@@ -3,11 +3,11 @@
 </template>
 
 <script setup></script>
+<!--create a separate com-->
 
 <style scoped>
 .USAGIDLE {
   width: 100%;
   height: 110%;
-  object-fit: cover;
 }
 </style>
