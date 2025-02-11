@@ -2,7 +2,6 @@
   <div class="sidebar">
     <div v-for="(thing, index) in things" :key="index" class="sidebar-item">
       <img :src="thing.src" alt="thing.image" class="sidebar-item-image" />
-      <span class="sidebar-item-stats">{{ thing.stats }}</span>
     </div>
   </div>
 </template>
@@ -29,14 +28,14 @@ const things = [
   position: fixed;
   top: 0;
   left: 0;
-  width: 200px;
-  height: 100vh;
-  background-color: #333;
-  padding: 20px;
+  width: 300px;
+  height: max-content;
+  background-color: #fcf4dd;
+  padding: 10px;
   color: white;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 170px;
   overflow-y: auto;
 }
 
@@ -47,13 +46,12 @@ const things = [
 }
 
 .sidebar-item-image {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
   border-radius: 5px;
 }
-
-.sidebar-item-stats {
-  font-size: 18px;
-}
 </style>
+
+//use reactive if you need the data inside thing to react use react //use ref //use slot for button
+in card, usually emit
