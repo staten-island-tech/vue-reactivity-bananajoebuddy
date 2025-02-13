@@ -1,4 +1,29 @@
 <template>
+  <div>
+    <p>Hunger:</p>
+  </div>
+  <div class="stat-bar">
+    <!-- The bar that fills based on the stat value -->
+    <div class="stat-background">
+      <div class="stat-fill" :style="{ width: stat + '%' }"></div>
+    </div>
+    <!-- Show the stat value inside the bar -->
+    <div class="stat-text">{{ stat }}%</div>
+  </div>
+  <div>
+    <p>Thirst:</p>
+  </div>
+  <div class="stat-bar">
+    <!-- The bar that fills based on the stat value -->
+    <div class="stat-background">
+      <div class="stat-fill" :style="{ width: stat + '%' }"></div>
+    </div>
+    <!-- Show the stat value inside the bar -->
+    <div class="stat-text">{{ stat }}%</div>
+  </div>
+  <div>
+    <p>Hygiene:</p>
+  </div>
   <div class="stat-bar">
     <!-- The bar that fills based on the stat value -->
     <div class="stat-background">
@@ -28,7 +53,7 @@ onMounted(() => {
     } else {
       clearInterval(intervalId) // Stop when the stat reaches 0
     }
-  }, 100)
+  }, 100) // Update every second (1000ms)
 })
 
 // Clean up (stop the timer) when the component is removed from the page
