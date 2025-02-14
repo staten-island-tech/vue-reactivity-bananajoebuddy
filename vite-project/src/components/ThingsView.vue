@@ -2,6 +2,7 @@
   <div class="sidebar">
     <div v-for="(thing, index) in things" :key="index" class="sidebar-item">
       <img :src="thing.src" alt="thing.image" class="sidebar-item-image" />
+      <button></button>
     </div>
   </div>
 </template>
