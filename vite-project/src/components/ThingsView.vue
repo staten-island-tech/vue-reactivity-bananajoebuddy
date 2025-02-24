@@ -2,7 +2,7 @@
   <div class="sidebar">
     <div v-for="(thing, index) in things" :key="index" class="sidebar-item">
       <img :src="thing.src" alt="thing.image" class="sidebar-item-image" />
-      <button></button>
+      <button class="feed-button"></button>
     </div>
   </div>
 </template>
@@ -26,31 +26,49 @@ const things = [
 
 <style scoped>
 .sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 300px;
-  height: max-content;
+  width: 10%; /* Adjusted from px to rem for scalability */
+  height: max-content; /* Using rem instead of vh */
   background-color: #fcf4dd;
-  padding: 10px;
-  color: white;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 170px;
+  gap: 1.5rem;
   overflow-y: auto;
 }
 
 .sidebar-item {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.625rem; /* 10px converted to rem */
 }
 
 .sidebar-item-image {
-  width: 200px;
-  height: 200px;
+  width: 5rem; /* Converted 80px to rem */
+  height: 5rem;
   object-fit: contain;
-  border-radius: 5px;
+  border-radius: 0.3125rem; /* 5px converted */
+}
+
+.feed-button {
+  padding: 0.3125rem 0.625rem; /* 5px 10px converted */
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.feed-button:hover {
+  background-color: #388e3c;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%; /* Full width on smaller screens */
+    height: auto; /* Allow it to shrink */
+  }
 }
 </style>
 
