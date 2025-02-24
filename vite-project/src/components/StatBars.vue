@@ -1,70 +1,80 @@
 <template>
   <div>
     <p>Hunger:</p>
-    <div class="stat-bar">
-      <div class="stat-background">
-        <div class="stat-fill" :style="{ width: hungerStat + '%' }"></div>
-      </div>
-      <div class="stat-text">{{ hungerStat }}%</div>
-    </div>
-
-    <p>Thirst:</p>
-    <div class="stat-bar">
-      <div class="stat-background">
-        <div class="stat-fill" :style="{ width: thirstStat + '%' }"></div>
-      </div>
-      <div class="stat-text">{{ thirstStat }}%</div>
-    </div>
-
-    <p>Hygiene:</p>
-    <div class="stat-bar">
-      <div class="stat-background">
-        <div class="stat-fill" :style="{ width: hygieneStat + '%' }"></div>
-      </div>
-      <div class="stat-text">{{ hygieneStat }}%</div>
-    </div>
   </div>
-</template>
-
-<script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-
-const hungerStat = ref(100)
-const thirstStat = ref(100)
-const hygieneStat = ref(100)
-
-let intervalId = null
-
-// Decrease stats every second
-onMounted(() => {
+  <div class="stat-bar">
+    <!-- The bar that fills based on the stat value -->
+    <div class="stat-background">
+      <div class="stat-fill" :style="{ width: stat + '%' }"></div>
+    </div>
+    <!-- Show the stat value inside the bar -->
+    <div class="stat-text">{{ stat }}%</div>
+  </div>
+  <div>
+    <p>Thirst:</p>
+  </div>
+  <div class="stat-bar">
+    <!-- The bar that fills based on the stat value -->
+    <div class="stat-background">
+      <div class="stat-fill" :style="{ width: stat + '%' }"></div>
+    </div>
+    <!-- Show the stat value inside the bar -->
+    <div class="stat-text">{{ stat }}%</div>
+  </div>
+  <div>
+    <p>Hygiene:</p>
+  </div>
+  <div class="stat-bar">
+    <!-- The bar that fills based on the stat value -->
+    <div class="stat-background">
+      <div class="stat-fill" :style="{ width: stat + '%' }"></div>
+    </div>
+    <!-- Show the stat value inside the bar -->
+    <div class="stat-text">{{ stat }}%</div>
+  </div>
+ </template>
+ 
+ 
+ <script setup>
+ // Import Vue's "ref" for reactive data
+ import { ref, onMounted, onUnmounted } from 'vue'
+ 
+ 
+ // Step 1: Create a ref for the stat value. We'll start at 100%.
+ const stat = ref(100)
+ 
+ 
+ // Step 2: Decrease the stat every second
+ let intervalId = null
+ 
+ 
+ // When the component is mounted (added to the page), we start decreasing the stat.
+ onMounted(() => {
   intervalId = setInterval(() => {
-    if (hungerStat.value > 0) hungerStat.value -= 5
-    if (thirstStat.value > 0) thirstStat.value -= 5
-    if (hygieneStat.value > 0) hygieneStat.value -= 5
-    if (hungerStat.value <= 0 && thirstStat.value <= 0 && hygieneStat.value <= 0) {
-      clearInterval(intervalId)
+    // If the stat is above 0, decrease it by 5 each second
+    if (stat.value > 0) {
+      stat.value -= 5
+    } else {
+      clearInterval(intervalId) // Stop when the stat reaches 0
     }
-  }, 1000)
-})
-
-onUnmounted(() => {
+  }, 100) // Update every second (1000ms)
+ })
+ 
+ 
+ // Clean up (stop the timer) when the component is removed from the page
+ onUnmounted(() => {
   if (intervalId) {
     clearInterval(intervalId)
   }
-})
-
-// Method to increase stats
-const increaseStat = (statType, value) => {
-  if (statType === 'hunger') {
-    hungerStat.value = Math.min(hungerStat.value + value, 100) // Don't exceed 100
-  } else if (statType === 'thirst') {
-    thirstStat.value = Math.min(thirstStat.value + value, 100) // Don't exceed 100
-  } else if (statType === 'hygiene') {
-    hygieneStat.value = Math.min(hygieneStat.value + value, 100) // Don't exceed 100
-  }
-}
-</script>
-
-<style scoped>
-/* Styles remain the same */
-</style>
+ })
+ </script>
+ 
+ 
+ <style scoped>
+ /* Step 3: Style the stat bar */
+ 
+ 
+ </style>
+ 
+ 
+ 

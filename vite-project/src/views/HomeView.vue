@@ -1,26 +1,17 @@
 <template>
   <div class = "container">
   <div><UsagiCom /></div>
-  <ThingsView @updateStat="handleUpdateStat" />
-    <StatBars :hungerStat="hungerStat" :thirstStat="thirstStat" :hygieneStat="hygieneStat" />
+  <div><ThingsView></ThingsView></div>
+  <div><StatBars></StatBars></div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+
 import UsagiCom from '@/components/UsagiCom.vue'
 import ThingsView from '@/components/ThingsView.vue'
 import StatBars from '@/components/StatBars.vue'
 
-const handleUpdateStat = (stat) => {
-  if (stat.type === 'hunger') {
-    hungerStat.value = Math.min(hungerStat.value + stat.value, 100)
-  } else if (stat.type === 'thirst') {
-    thirstStat.value = Math.min(thirstStat.value + stat.value, 100)
-  } else if (stat.type === 'hygiene') {
-    hygieneStat.value = Math.min(hygieneStat.value + stat.value, 100)
-  }
-}
 </script>
 <style scoped>
 .container {
@@ -63,45 +54,43 @@ const handleUpdateStat = (stat) => {
  object-fit: contain;
  border-radius: 0.3125rem; /* 5px converted */
 }
-
+/* Container for each stat bar */
 .stat-bar {
-  width: 100%; /* Full width of the container */
-  max-width: 500px; /* Optional: To prevent it from becoming too wide */
-  height: 30px; /* Fixed height */
-  background-color: #ccc; /* Light gray background */
-  border-radius: 15px; /* Rounded corners */
+  width: 100%;
+  max-width: 300px;
+  height: 30px;
+  background-color: #e0e0e0; /* Light gray background */
+  border-radius: 15px;
+  overflow: hidden;
   position: relative;
-  margin-bottom: 1rem; /* Optional: Spacing between the bars */
-  box-sizing: border-box; /* Prevents overflow */
+  margin-bottom: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.stat-background {
-  width: 100%; /* Full width background */
-  height: 100%; /* Full height background */
-  background-color: #ddd; /* Light gray background for the bar */
-  border-radius: 15px; /* Rounded corners */
-  overflow: hidden; /* Ensures that the fill doesn’t overflow */
-}
-
+/* The colored part of the bar that decreases */
 .stat-fill {
-  height: 100%; /* Full height of the bar */
-  background-color: #4caf50; /* Green color for the fill */
-  transition: width 1s ease-out; /* Smooth animation as the bar fills/shrinks */
+  height: 100%;
+  width: 100%; /* Starts full */
+  background: linear-gradient(90deg, #ff6363, #ffab40); /* Gradient effect */
+  transition: width 0.3s ease-in-out; /* Smooth decrease */
 }
 
+/* Text displaying the percentage */
 .stat-text {
-  position: absolute; /* Position the text inside the bar */
-  top: 50%; /* Center the text vertically */
-  left: 50%; /* Center the text horizontally */
-  transform: translate(-50%, -50%); /* Exactly center it */
-  color: white; /* White color for the text */
-  font-weight: bold; /* Make text bold */
-  font-size: 1rem; /* Optional: Adjust text size */
-  z-index: 1; /* Ensure the text is always on top */
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-
-
+.USAGIDLE {
+  width: 100%;
+  height: 110%;
+}
 
 </style>
 
