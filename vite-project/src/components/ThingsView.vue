@@ -28,7 +28,5 @@ const things = [
 
 
 
-/* Mobile responsiveness */
-
 </style>
 

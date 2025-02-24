@@ -74,7 +74,7 @@ import StatBars from '@/components/StatBars.vue'
 }
 
 .sidebar-item {
-  width: 25%;
+  width: 10rem;
   height: 30%;
   display: flex;
   align-items: center;
