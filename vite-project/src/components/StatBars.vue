@@ -66,33 +66,5 @@ onUnmounted(() => {
 
 <style scoped>
 /* Step 3: Style the stat bar */
-.stat-bar {
-  width: 100%; /* Full width */
-  height: 30px; /* Fixed height */
-  background-color: #ccc; /* Light gray background */
-  border-radius: 15px; /* Rounded corners */
-  position: relative;
-}
 
-.stat-background {
-  width: 100%; /* Full width background */
-  height: 100%; /* Full height background */
-  background-color: #ddd; /* Light gray background for the bar */
-  border-radius: 15px; /* Rounded corners */
-}
-
-.stat-fill {
-  height: 100%; /* Full height of the bar */
-  background-color: #4caf50; /* Green color for the fill */
-  transition: width 1s; /* Smooth animation as the bar shrinks */
-}
-
-.stat-text {
-  position: absolute; /* Position the text inside the bar */
-  top: 0;
-  left: 50%; /* Center the text */
-  transform: translateX(-50%); /* Exactly center it */
-  color: white; /* White color for the text */
-  font-weight: bold; /* Make text bold */
-}
 </style>
