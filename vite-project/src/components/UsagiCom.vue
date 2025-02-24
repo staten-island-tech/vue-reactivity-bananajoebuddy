@@ -6,8 +6,4 @@
 <!--create a separate com-->
 
 <style scoped>
-.USAGIDLE {
-  width: 100%;
-  height: 110%;
-}
 </style>

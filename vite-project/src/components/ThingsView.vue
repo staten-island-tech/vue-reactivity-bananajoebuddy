@@ -26,14 +26,16 @@ const things = [
 
 <style scoped>
 .sidebar {
-  width: 10%; /* Adjusted from px to rem for scalability */
-  height: max-content; /* Using rem instead of vh */
+  width: 50vh; /* Adjusted from px to rem for scalability */
+  height: 50%; 
   background-color: #fcf4dd;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  overflow-y: auto;
+  align-content: space-evenly;
+  align-content: contain;
+
 }
 
 .sidebar-item {
@@ -43,34 +45,14 @@ const things = [
 }
 
 .sidebar-item-image {
-  width: 5rem; /* Converted 80px to rem */
-  height: 5rem;
+  width: 50%; /* Converted 80px to rem */
+  height: 50vh;
   object-fit: contain;
   border-radius: 0.3125rem; /* 5px converted */
 }
 
-.feed-button {
-  padding: 0.3125rem 0.625rem; /* 5px 10px converted */
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 0.3125rem;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.feed-button:hover {
-  background-color: #388e3c;
-}
 
 /* Mobile responsiveness */
-@media (max-width: 768px) {
-  .sidebar {
-    width: 100%; /* Full width on smaller screens */
-    height: auto; /* Allow it to shrink */
-  }
-}
+
 </style>
 
-//use reactive if you need the data inside thing to react use react //use ref //use slot for button
-in card, usually emit

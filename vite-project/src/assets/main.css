@@ -5,6 +5,8 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  width: auto;
+  height: 100dvh;
 }
 #app {
   max-width: 1280px;
