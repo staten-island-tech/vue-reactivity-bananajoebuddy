@@ -1,15 +1,26 @@
 <template>
   <div class = "container">
-  <div><ThingsView></ThingsView></div>
   <div><UsagiCom /></div>
-  <div><StatBars></StatBars></div>
+  <ThingsView @updateStat="handleUpdateStat" />
+    <StatBars :hungerStat="hungerStat" :thirstStat="thirstStat" :hygieneStat="hygieneStat" />
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import UsagiCom from '@/components/UsagiCom.vue'
 import ThingsView from '@/components/ThingsView.vue'
 import StatBars from '@/components/StatBars.vue'
+
+const handleUpdateStat = (stat) => {
+  if (stat.type === 'hunger') {
+    hungerStat.value = Math.min(hungerStat.value + stat.value, 100)
+  } else if (stat.type === 'thirst') {
+    thirstStat.value = Math.min(thirstStat.value + stat.value, 100)
+  } else if (stat.type === 'hygiene') {
+    hygieneStat.value = Math.min(hygieneStat.value + stat.value, 100)
+  }
+}
 </script>
 <style scoped>
 .container {
@@ -21,6 +32,36 @@ import StatBars from '@/components/StatBars.vue'
   flex-direction: row;
   width: 100vw;  /* Full viewport width */
   height: 100vh;
+}
+
+.sidebar {
+ flex: 1;
+ max-width: 30vw; /* Shrinks with screen */
+ min-width: 10vw;
+ height: 100dvh;
+ background-color: #fcf4dd;
+ display: flex;
+ flex-direction: column;
+ justify-content: space-evenly;
+ align-content: flex-start;
+
+
+}
+
+
+.sidebar-item {
+ width: 10rem;
+ height: 30%;
+ display: flex;
+ align-items: center;
+}
+
+
+.sidebar-item-image {
+ width: 100%; /* Converted 80px to rem */
+ height: 50%;
+ object-fit: contain;
+ border-radius: 0.3125rem; /* 5px converted */
 }
 
 .stat-bar {
@@ -60,32 +101,7 @@ import StatBars from '@/components/StatBars.vue'
 }
 
 
-.sidebar {
-  flex: 1;
-  max-width: 30vw; /* Shrinks with screen */
-  min-width: 10vw;
-  height: 100dvh;
-  background-color: #fcf4dd;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-content: flex-start;
 
-}
-
-.sidebar-item {
-  width: 10rem;
-  height: 30%;
-  display: flex;
-  align-items: center;
-}
-
-.sidebar-item-image {
-  width: 100%; /* Converted 80px to rem */
-  height: 50%;
-  object-fit: contain;
-  border-radius: 0.3125rem; /* 5px converted */
-}
 
 </style>
 
