@@ -16,17 +16,22 @@ import StatBars from '@/components/StatBars.vue'
   display: flex;
   justify-content: contain;
   align-items: flex-start;
+  justify-content: contain;
+  align-items: flex-start;
   flex-direction: row;
   width: 100vw;  /* Full viewport width */
   height: 100vh;
 }
 
 .stat-bar {
-  width: 100%; /* Full width */
+  width: 100%; /* Full width of the container */
+  max-width: 500px; /* Optional: To prevent it from becoming too wide */
   height: 30px; /* Fixed height */
   background-color: #ccc; /* Light gray background */
   border-radius: 15px; /* Rounded corners */
   position: relative;
+  margin-bottom: 1rem; /* Optional: Spacing between the bars */
+  box-sizing: border-box; /* Prevents overflow */
 }
 
 .stat-background {
@@ -34,22 +39,26 @@ import StatBars from '@/components/StatBars.vue'
   height: 100%; /* Full height background */
   background-color: #ddd; /* Light gray background for the bar */
   border-radius: 15px; /* Rounded corners */
+  overflow: hidden; /* Ensures that the fill doesn’t overflow */
 }
 
 .stat-fill {
   height: 100%; /* Full height of the bar */
   background-color: #4caf50; /* Green color for the fill */
-  transition: width 1s; /* Smooth animation as the bar shrinks */
+  transition: width 1s ease-out; /* Smooth animation as the bar fills/shrinks */
 }
 
 .stat-text {
   position: absolute; /* Position the text inside the bar */
-  top: 0;
-  left: 50%; /* Center the text */
-  transform: translateX(-50%); /* Exactly center it */
+  top: 50%; /* Center the text vertically */
+  left: 50%; /* Center the text horizontally */
+  transform: translate(-50%, -50%); /* Exactly center it */
   color: white; /* White color for the text */
   font-weight: bold; /* Make text bold */
+  font-size: 1rem; /* Optional: Adjust text size */
+  z-index: 1; /* Ensure the text is always on top */
 }
+
 
 .sidebar {
   flex: 1;
@@ -65,7 +74,7 @@ import StatBars from '@/components/StatBars.vue'
 }
 
 .sidebar-item {
-  width: 10%;
+  width: 25%;
   height: 30%;
   display: flex;
   align-items: center;
@@ -78,12 +87,5 @@ import StatBars from '@/components/StatBars.vue'
   border-radius: 0.3125rem; /* 5px converted */
 }
 
-
-
-@media (max-width: 768px) {
-  .layout {
-    flex-direction: row;
-    align-content: space-evenly;
-  }
-}
 </style>
+
