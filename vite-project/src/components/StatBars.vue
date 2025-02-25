@@ -38,16 +38,10 @@
  <script setup>
  // Import Vue's "ref" for reactive data
  import { ref, onMounted, onUnmounted } from 'vue'
- 
- 
  // Step 1: Create a ref for the stat value. We'll start at 100%.
  const stat = ref(100)
- 
- 
  // Step 2: Decrease the stat every second
  let intervalId = null
- 
- 
  // When the component is mounted (added to the page), we start decreasing the stat.
  onMounted(() => {
   intervalId = setInterval(() => {
@@ -57,10 +51,8 @@
     } else {
       clearInterval(intervalId) // Stop when the stat reaches 0
     }
-  }, 100) // Update every second (1000ms)
+  }, 1000) // Update every second (1000ms)
  })
- 
- 
  // Clean up (stop the timer) when the component is removed from the page
  onUnmounted(() => {
   if (intervalId) {
@@ -68,13 +60,36 @@
   }
  })
  </script>
- 
- 
  <style scoped>
  /* Step 3: Style the stat bar */
- 
- 
+ .stat-bar {
+  width: 100%;
+  max-width: 300px;
+  height: 30px;
+  background-color: #2e2828; /* Light gray background */
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+ }
+ /* The colored part of the bar that decreases */
+ .stat-fill {
+  height: 100%;
+  width: 100%; /* Starts full */
+  background: linear-gradient(90deg, #ff6363, #ffab40); /* Gradient effect */
+  transition: width 0.3s ease-in-out; /* Smooth decrease */
+ }
+ /* Text displaying the percentage */
+ .stat-text {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
+  top: 50%;
+  transform: translateY(-50%);
+ }
  </style>
- 
- 
  
