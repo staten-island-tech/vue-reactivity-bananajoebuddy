@@ -2,25 +2,27 @@
   <div class="sidebar">
     <div v-for="(thing, index) in things" :key="index" class="sidebar-item">
       <img :src="thing.src" alt="thing.image" class="sidebar-item-image" />
-      <button ></button>
+      <button @click="useItem(thing)">{{ thing.type }}</button>
     </div>
   </div>
  </template>
  
  
  <script setup>
-
-  import { defineEmits, defineProps } from 'vue'
+   import StatBars from '@/components/StatBars.vue'
+  import { defineProps } from 'vue'
   const things = [
   { src: '/cockroach.png', stats: 5, type: "food" },
   { src: '/yakult.png', stats: 5, type: "water" },
   { src: '/shower.png', stats: 30, type: "clean" }
 ]
+
+
  
 const props = defineProps({
   things: {
     type: Array,
-    required: true
+    required: true,
   }
 })
 

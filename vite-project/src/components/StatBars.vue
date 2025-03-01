@@ -5,10 +5,10 @@
   <div class="stat-bar">
     <!-- The bar that fills based on the stat value -->
     <div class="stat-background">
-      <div class="stat-fill" :style="{ width: stat + '%' }"></div>
+      <div class="stat-fill" :style="{ width: hungerstat + '%' }"></div>
     </div>
     <!-- Show the stat value inside the bar -->
-    <div class="stat-text">{{ stat }}%</div>
+    <div class="stat-text">{{ hungerstat }}%</div>
   </div>
   <div>
     <p>Thirst:</p>
@@ -16,10 +16,10 @@
   <div class="stat-bar">
     <!-- The bar that fills based on the stat value -->
     <div class="stat-background">
-      <div class="stat-fill" :style="{ width: stat + '%' }"></div>
+      <div class="stat-fill" :style="{ width: thirststat + '%' }"></div>
     </div>
     <!-- Show the stat value inside the bar -->
-    <div class="stat-text">{{ stat }}%</div>
+    <div class="stat-text">{{ thirststat }}%</div>
   </div>
   <div>
     <p>Hygiene:</p>
@@ -27,10 +27,10 @@
   <div class="stat-bar">
     <!-- The bar that fills based on the stat value -->
     <div class="stat-background">
-      <div class="stat-fill" :style="{ width: stat + '%' }"></div>
+      <div class="stat-fill" :style="{ width: hygienestat + '%' }"></div>
     </div>
     <!-- Show the stat value inside the bar -->
-    <div class="stat-text">{{ stat }}%</div>
+    <div class="stat-text">{{ hygienestat }}%</div>
   </div>
  </template>
  
@@ -38,26 +38,51 @@
  <script setup>
  // Import Vue's "ref" for reactive data
  import { ref, onMounted, onUnmounted } from 'vue'
- // Step 1: Create a ref for the stat value. We'll start at 100%.
- const stat = ref(100)
+ 
+ const hungerstat = ref(100)
+ const thirststat = ref(100)
+ const hygienestat = ref(100)
  // Step 2: Decrease the stat every second
- let intervalId = null
+ let hungerInterval = null
+  let thirstInterval = null
+let hygieneInterval = null
  // When the component is mounted (added to the page), we start decreasing the stat.
+
+ const decreaseHunger = () => {
+  if (hungerstat.value > 0) {
+    hungerstat.value -= 5
+  } else {
+    clearInterval(hungerInterval)
+  }
+}
+
+const decreaseThirst = () => {
+  if (thirststat.value > 0) {
+    thirststat.value -= 5
+  } else {
+    clearInterval(thirstInterval)
+  }
+}
+
+const decreaseHygiene = () => {
+  if (hygienestat.value > 0) {
+    hygienestat.value -= 5
+  } else {
+    clearInterval(hygieneInterval)
+  }
+}
+
+
  onMounted(() => {
-  intervalId = setInterval(() => {
-    // If the stat is above 0, decrease it by 5 each second
-    if (stat.value > 0) {
-      stat.value -= 5
-    } else {
-      clearInterval(intervalId) // Stop when the stat reaches 0
-    }
-  }, 1000) // Update every second (1000ms)
+  hungerInterval = setInterval(decreaseHunger, 1000)
+  thirstInterval = setInterval(decreaseThirst, 1000)
+  hygieneInterval = setInterval(decreaseHygiene, 1000)
  })
  // Clean up (stop the timer) when the component is removed from the page
  onUnmounted(() => {
-  if (intervalId) {
-    clearInterval(intervalId)
-  }
+  clearInterval(hungerInterval)
+  clearInterval(thirstInterval)
+  clearInterval(hygieneInterval)
  })
  </script>
  <style scoped>

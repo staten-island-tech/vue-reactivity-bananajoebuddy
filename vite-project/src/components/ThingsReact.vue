@@ -14,7 +14,10 @@ import StatBars from './StatBars.vue'
 
 <style scoped></style>
 
+<!--
+    take the stats from the things view
 
+-->
 
 My project is a usagi pet simulator where the stat bars keep going down and you have a sidebar with items to feed him to make the stats go up (ignore the sidebar coding for now just focus on the stat bars) 
 Data Binding: Data declared and bound to
