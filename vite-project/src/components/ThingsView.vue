@@ -5,31 +5,25 @@
       <button @click="useItem(thing)">{{ thing.type }}</button>
     </div>
   </div>
- </template>
- 
- 
- <script setup>
-   import StatBars from '@/components/StatBars.vue'
-  import { defineProps } from 'vue'
-  const things = [
-  { src: '/cockroach.png', stats: 5, type: "food" },
-  { src: '/yakult.png', stats: 5, type: "water" },
-  { src: '/shower.png', stats: 30, type: "clean" }
+</template>
+
+<script setup>
+import { defineProps } from 'vue'
+const things = [
+  { src: '/cockroach.png', stats: 5, type: 'food' },
+  { src: '/yakult.png', stats: 5, type: 'water' },
+  { src: '/shower.png', stats: 30, type: 'clean' },
 ]
 
-
- 
 const props = defineProps({
   things: {
     type: Array,
     required: true,
-  }
+  },
 })
+</script>
 
- </script>
- 
- 
- <style scoped> 
+<style scoped>
 .sidebar {
   flex: 1;
   max-width: 30vw; /* Shrinks with screen */
@@ -45,7 +39,6 @@ const props = defineProps({
   padding-bottom: 25%;
 }
 
-
 .sidebar-item {
   width: 60%;
   height: 60%;
@@ -53,15 +46,10 @@ const props = defineProps({
   align-items: center;
 }
 
-
 .sidebar-item-image {
   width: 100%; /* Converted 80px to rem */
   height: 50%;
   object-fit: contain;
   border-radius: 0.3125rem; /* 5px converted */
 }
- 
- 
- 
- 
- </style> 
+</style>
